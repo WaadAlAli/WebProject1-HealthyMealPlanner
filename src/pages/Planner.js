@@ -6,7 +6,8 @@ import recipesData from "../Data/Recipes"; // Your array of recipe objects
 
 export default function PlannerPage() {
  // Get the setRecipes function from RecipesContext
-// This allows us to update the recipes stored in context so that all components using the context can access them
+// This allows us to update the recipes stored in context so that
+//  all components using the context can access them
 const { setRecipes } = useContext(RecipesContext);
 
 

@@ -1,25 +1,28 @@
 import React from "react";
 // Importing star icons from MUI
 import { Star, StarBorder } from "@mui/icons-material";
+import f1 from "../assets/person1.jpg"
+import f2 from "../assets/person2.jpg"
+import f3 from "../assets/person3.jpg"
 
 // Testimonial data (you can edit or add more)
 const testimonials = [
   {
     name: "Layla H.",
     text: "NutriPlan completely changed how I eat! The meals are healthy, delicious, and perfectly balanced.",
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    image: f2,
     rating: 5,
   },
   {
     name: "Omar K.",
     text: "I love how easy it is to plan my meals. I’ve lost 5kg in 2 months without feeling restricted!",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    image: f1,
     rating: 4,
   },
   {
     name: "Sara M.",
     text: "Everything feels so personalized and professional. Highly recommend NutriPlan to everyone.",
-    image: "https://randomuser.me/api/portraits/women/68.jpg",
+    image: f3,
     rating: 5,
   },
 ];
@@ -37,13 +40,14 @@ const Testimonials = () => {
         {testimonials.map((review, index) => (
           <div
             key={index}
-            className="bg-white shadow-lg rounded-2xl p-6 text-center hover:shadow-xl transition-shadow duration-300 hover:shadow-green-400 hover:-translate-y-2"
+            className="bg-white shadow-lg rounded-2xl p-6 text-center hover:shadow-xl 
+            transition-shadow duration-300 hover:shadow-green-400 hover:-translate-y-2"
           >
             {/* Reviewer image */}
             <img
               src={review.image}
               alt={review.name}
-              className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
+              className="w-30 h-40 rounded-full mx-auto mb-4 object-cover"
             />
 
             {/* Rating stars */}

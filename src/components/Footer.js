@@ -1,10 +1,10 @@
 import React from "react";
 import { Facebook, Instagram, Twitter, GitHub, Send } from "@mui/icons-material";
-
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-green-50 text-gray-700 py-10 mt-10 border-t border-green-200">
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <div className="max-w-6xl mx-auto px-3 grid grid-cols-1 sm:grid-cols-4 gap-3">
         
         {/* Brand section */}
         <div>
@@ -13,6 +13,30 @@ const Footer = () => {
             Plan your meals effortlessly, eat healthy, and save time.
             Discover recipes designed to fit your lifestyle.
           </p>
+        </div>
+        {/* Quick Links */}
+        <div>
+          <h3 className="text-lg font-semibold text-green-700 mb-3">Quick Links</h3>
+          <ul className="space-y-2">
+            <li>
+              <Link to="/" className="hover:text-green-600 transition">Home</Link>
+            </li>
+            <li>
+              <Link to="/planner" className="hover:text-green-600 transition">Planner</Link>
+            </li>
+            <li>
+              <Link to="/recipes" className="hover:text-green-600 transition">Recipes</Link>
+            </li>
+            <li>
+              <Link to="/about" className="hover:text-green-600 transition">About</Link>
+            </li>
+            <li>
+              <Link to="/contact" className="hover:text-green-600 transition">Contact</Link>
+            </li>
+            <li>
+              <Link to="/login" className="hover:text-green-600 transition">Login</Link>
+            </li>
+          </ul>
         </div>
 
         {/* Newsletter */}
@@ -50,7 +74,7 @@ const Footer = () => {
 
       {/* Bottom line */}
       <div className="text-center text-sm text-gray-500 mt-8 border-t border-green-200 pt-4">
-        © {new Date().getFullYear()} <span className="font-semibold text-green-700">MealPlanner</span>. 
+        © 2025 <span className="font-semibold text-green-700">MealPlanner</span>. 
         All rights reserved.
       </div>
     </footer>

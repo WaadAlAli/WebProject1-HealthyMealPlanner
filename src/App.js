@@ -5,6 +5,7 @@ import Recipes  from './pages/Recipes';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Planner from './pages/Planner';
+import LoginPage from './pages/Login';
 import Footer from './components/Footer';
 import { RecipesProvider } from "./Context/RecipesContext";
 
@@ -30,6 +31,7 @@ function App(){
       <Route path='/about' element={<About/>}/>
       <Route path='/contact' element={<Contact/>}/>
       <Route path='/planner' element={<Planner/>}/>
+      <Route path='/login' element={<LoginPage/>}/>
     </Routes>
  
   <Footer/>

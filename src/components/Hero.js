@@ -1,12 +1,13 @@
 import React from "react";
-import Mango from "../assets/Mango.jpg"
+import Plate from "../assets/plate.png"
 import { Link } from "react-router-dom"; // used to navigate between pages inside the app
 
 // This is the Hero section that appears at the top of the homepage
 const Hero = () => {
   return (
     // The main container (section) with a gradient background and responsive flex layout
-    <section className="bg-gradient-to-r from-green-50 via-white to-green-100 flex flex-col md:flex-row items-center justify-between px-8 md:px-16 py-20 overflow-hidden">
+    <section className="bg-gradient-to-r from-green-50 via-white to-green-100 flex flex-col md:flex-row items-center
+     justify-between px-8 md:py-20 py-12 overflow-hidden ">
 
       {/* ===== LEFT SIDE: TEXT CONTENT ===== */}
       <div className="flex-1 text-center md:text-left space-y-6 z-10">
@@ -45,9 +46,9 @@ const Hero = () => {
       {/* ===== RIGHT SIDE: IMAGE ===== */}
       <div className="flex-1 mt-10 md:mt-0 relative">
         <img
-  src={Mango}
+  src={Plate}
   alt="Healthy food bowls"
-  className="rounded-2xl shadow-2xl w-full md:w-[90%] mx-auto transform hover:scale-105 transition-transform duration-[2500ms] ease-in-out animate-floating"
+  className="  md:w-[90%] mx-auto transform hover:scale-105 transition-transform duration-[2500ms] ease-in-out animate-floating"
 />
 
       </div>
