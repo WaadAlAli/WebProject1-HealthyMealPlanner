@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './components/Navbar';
+import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
+import Home from './pages/Home';
+import Recipes  from './pages/Recipes';
+import Contact from './pages/Contact';
+import About from './pages/About';
+import Planner from './pages/Planner';
+import Footer from './components/Footer';
+import { RecipesProvider } from "./Context/RecipesContext";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+function App(){
+ 
+   return(
+    
+<RecipesProvider>
+  <Router>
+    <div style={{ display: "flex", flexDirection: "column", minHeight:
+"100vh" }}>
+  
+<Navbar />
+
+     
+   
+
+    <Routes>
+      <Route index element={<Home />} />
+      <Route path='/' element={<Home/>}/>
+      <Route path='/recipes' element={<Recipes/>}/>
+      <Route path='/about' element={<About/>}/>
+      <Route path='/contact' element={<Contact/>}/>
+      <Route path='/planner' element={<Planner/>}/>
+    </Routes>
+ 
+  <Footer/>
+  </div>
+  
+  </Router>
+   </RecipesProvider>
+);
+
+  
 }
+
 
 export default App;
