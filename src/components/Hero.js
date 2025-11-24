@@ -1,5 +1,5 @@
 import React from "react";
-import Plate from "../assets/plate.png"
+import Plate from "../assets/Mango.jpg"
 import { Link } from "react-router-dom"; // used to navigate between pages inside the app
 
 // This is the Hero section that appears at the top of the homepage
@@ -48,7 +48,8 @@ const Hero = () => {
         <img
   src={Plate}
   alt="Healthy food bowls"
-  className="  md:w-[90%] mx-auto transform hover:scale-105 transition-transform duration-[2500ms] ease-in-out animate-floating"
+  className="rounded-2xl  md:w-[90%] mx-auto transform hover:scale-105 
+  transition-transform duration-[2500ms] ease-in-out animate-floating"
 />
 
       </div>
