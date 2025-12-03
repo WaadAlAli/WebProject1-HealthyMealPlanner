@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/WebProject1-HealthyMealPlanner/static/css/main.4a11c906.css",
-    "main.js": "/WebProject1-HealthyMealPlanner/static/js/main.442ec808.js",
+    "main.css": "/WebProject1-HealthyMealPlanner/static/css/main.dc54ad93.css",
+    "main.js": "/WebProject1-HealthyMealPlanner/static/js/main.ebd21c27.js",
     "static/js/787.d4aba7ab.chunk.js": "/WebProject1-HealthyMealPlanner/static/js/787.d4aba7ab.chunk.js",
     "static/media/Lunch8.jpg": "/WebProject1-HealthyMealPlanner/static/media/Lunch8.790c2bac8f5562a9eeba.jpg",
     "static/media/Mango.jpg": "/WebProject1-HealthyMealPlanner/static/media/Mango.c15272fd425115c7e976.jpg",
@@ -35,12 +35,12 @@
     "static/media/Grape.jpg": "/WebProject1-HealthyMealPlanner/static/media/Grape.92dfdb9f781b163a526d.jpg",
     "static/media/Strawberry.jpg": "/WebProject1-HealthyMealPlanner/static/media/Strawberry.97febc6912518ec6e63d.jpg",
     "index.html": "/WebProject1-HealthyMealPlanner/index.html",
-    "main.4a11c906.css.map": "/WebProject1-HealthyMealPlanner/static/css/main.4a11c906.css.map",
-    "main.442ec808.js.map": "/WebProject1-HealthyMealPlanner/static/js/main.442ec808.js.map",
+    "main.dc54ad93.css.map": "/WebProject1-HealthyMealPlanner/static/css/main.dc54ad93.css.map",
+    "main.ebd21c27.js.map": "/WebProject1-HealthyMealPlanner/static/js/main.ebd21c27.js.map",
     "787.d4aba7ab.chunk.js.map": "/WebProject1-HealthyMealPlanner/static/js/787.d4aba7ab.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4a11c906.css",
-    "static/js/main.442ec808.js"
+    "static/css/main.dc54ad93.css",
+    "static/js/main.ebd21c27.js"
   ]
 }
