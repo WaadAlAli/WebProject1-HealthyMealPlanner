@@ -1,16 +1,39 @@
-import React from "react";
-import map from "../assets/map.jpg";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 // Import Material UI icons
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 export default function Contact() {
-  const handleSubmit = (e) => {
-  e.preventDefault(); // Prevent page reload
-  alert("Your message has been saved! We will contact you soon.");
-  e.target.reset(); //  clear the form fields
-};
+  const [info, setInfo] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+
+  // Load contact info
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/admin/contact")
+      .then((res) => setInfo(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await axios.post("http://localhost:5000/contact/messages", formData);
+    alert("Message sent successfully!");
+    setFormData({ name: "", email: "", message: "" });
+   
+  };
 
   return (
     // Main container
@@ -43,9 +66,12 @@ export default function Contact() {
             </label>
             <input
               type="text"
+              name="name"
+              onChange={handleChange}
               placeholder="Your name"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg 
                          focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                         required
             />
           </div>
 
@@ -56,9 +82,12 @@ export default function Contact() {
             </label>
             <input
               type="email"
+              name="email"
+            onChange={handleChange}
               placeholder="you@example.com"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg 
                          focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                         required
             />
           </div>
 
@@ -69,6 +98,8 @@ export default function Contact() {
             </label>
             <textarea
               rows="4"
+              name="message"
+              onChange={handleChange}
               placeholder="Write your message..."
               className="w-full px-4 py-2 border border-gray-300 rounded-lg 
                          focus:outline-none focus:ring-2 focus:ring-emerald-400"
@@ -96,26 +127,26 @@ export default function Contact() {
             {/* Phone */}
             <div className="flex items-center gap-3 text-gray-700">
               <PhoneIcon className="text-emerald-500" />
-              <p className="font-medium">+961 76 123 456</p>
+              <p className="font-medium">{info.phone}</p>
             </div>
 
             {/* Email */}
             <div className="flex items-center gap-3 text-gray-700">
               <EmailIcon className="text-emerald-500" />
-              <p className="font-medium">hello@nutriplan.com</p>
+              <p className="font-medium">{info.email}</p>
             </div>
 
             {/* Location */}
             <div className="flex items-center gap-3 text-gray-700">
               <LocationOnIcon className="text-emerald-500" />
-              <p className="font-medium">Beirut, Lebanon</p>
+              <p className="font-medium">{info.location}</p>
             </div>
           </div>
 
           {/* Map placeholder */}
           <div className="mt-6 rounded-2xl overflow-hidden shadow-md">
             <img
-              src={map}
+                src={`http://localhost:5000/images/${info.map_image}`}
               alt="Map"
               className="w-full h-56 object-cover"
             />

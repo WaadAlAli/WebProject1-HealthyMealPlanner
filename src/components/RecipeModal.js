@@ -26,18 +26,10 @@ export default function RecipeModal({ recipe, onClose }) {
                 Calories: {recipe.calories} kcal
               </p>
             )}
-           {/* Ingredients */}
-        {recipe.ingredients && recipe.ingredients.length > 0 && (
-          <div>
-            <h5 className="text-sm font-semibold mb-1">Ingredients:</h5>
-            <ul className="list-disc list-inside text-sm text-gray-700">
-              {recipe.ingredients.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-          </div>
+            <br/>
+           <p className="text-gray-600 mb-4">Protein: {recipe.protein} g </p>
+           <p className="text-gray-600 mb-4">Fats: {recipe.fats}g</p>
+           <p className="text-gray-600 mb-4">Carbs: {recipe.carbs}g</p>
 
           {/* Close button */}
           <button
@@ -49,5 +41,6 @@ export default function RecipeModal({ recipe, onClose }) {
         </div>
       </div>
     </div>
+      </div>
   );
 }
