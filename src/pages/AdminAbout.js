@@ -10,7 +10,7 @@ export default function AdminAbout() {
 
   // FETCH ABOUT DATA (ONE ROW)
   const fetchAbout = async () => {
-    const res = await axios.get("http://localhost:5000/admin/about");
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/admin/about`);
     setAbout(res.data);
   };
 
@@ -53,7 +53,7 @@ export default function AdminAbout() {
     formData.append("image", file ? file : form.image);
 
     await axios.put(
-      `http://localhost:5000/admin/about/update/${form.id}`,
+      `${process.env.REACT_APP_API_URL}/admin/about/update/${form.id}`,
       formData
     );
 
@@ -109,7 +109,7 @@ export default function AdminAbout() {
                 <td data-label="Image" className="border dark:text-white">
                   {about.image && (
                     <img
-                      src={`http://localhost:5000/images/${about.image}`}
+                      src={`${process.env.REACT_APP_API_URL}/images/${about.image}`}
                       alt="About"
                       className="w-20 h-20 object-cover rounded"
                     />

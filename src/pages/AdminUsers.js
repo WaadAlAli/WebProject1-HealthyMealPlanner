@@ -32,7 +32,7 @@ setFormUser((prev) => ({ ...prev, role: value }));
 };
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/admin/users");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/admin/users`);
       setUsers(res.data);
       setError(false);
     } catch (err) {
@@ -48,7 +48,7 @@ useEffect(() => {
   const deleteUser = async (id) => {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
     try {
-      await axios.delete(`http://localhost:5000/admin/users/delete/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/admin/users/delete/${id}`);
       setUsers(users.filter(u => u.UserID !== id));
     } catch (err) {
       console.log(error);
@@ -61,7 +61,7 @@ useEffect(() => {
     e.preventDefault();
     setError(false);
     try {
-      const res = await axios.post("http://localhost:5000/admin/users/add", formUser);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/admin/users/add`, formUser);
       setShowAddModal(false);
       fetchUsers();
     } catch (err) {
@@ -74,7 +74,7 @@ useEffect(() => {
   const handleEditUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/admin/users/update/${formUser.id}`, formUser);
+      await axios.put(`${process.env.REACT_APP_API_URL}/admin/users/update/${formUser.id}`, formUser);
       setShowEditModal(false);
       fetchUsers();
     } catch (err) {

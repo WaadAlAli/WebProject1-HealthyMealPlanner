@@ -20,7 +20,7 @@ setFormUser((prev) => ({ ...prev, [e.target.name]: e.target.value
 };
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/admin/categories");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/admin/categories`);
       setCategories(res.data);
       setError(false);
     } catch (err) {
@@ -36,7 +36,7 @@ useEffect(() => {
   const deleteCategory = async (id) => {
     if (!window.confirm("Are you sure you want to delete this category?")) return;
     try {
-      await axios.delete(`http://localhost:5000/admin/categories/delete/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/admin/categories/delete/${id}`);
       setCategories(categories.filter(u => u.categoryID !== id));
       fetchCategories();
         } catch (err) {
@@ -50,7 +50,7 @@ useEffect(() => {
     e.preventDefault();
     setError(false);
     try {
-      const res = await axios.post("http://localhost:5000/admin/categories/add", formUser);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/admin/categories/add`, formUser);
       setShowAddModal(false);
       fetchCategories();
     } catch (err) {
@@ -63,7 +63,7 @@ useEffect(() => {
   const handleEditCategory = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/admin/categories/update/${formUser.categoryID}`, formUser);
+      await axios.put(`${process.env.REACT_APP_API_URL}/admin/categories/update/${formUser.categoryID}`, formUser);
       setShowEditModal(false);
       fetchCategories();
     } catch (err) {

@@ -7,7 +7,7 @@ export default function AdminMessages() {
 
   const fetchMessages = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/admin/messages");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/admin/messages`);
       setMessages(res.data);
     } catch (err) {
       console.log(err);
@@ -20,7 +20,7 @@ export default function AdminMessages() {
 
   const markAsRead = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/admin/messages/read/${id}`);
+      await axios.put(`${process.env.REACT_APP_API_URL}/admin/messages/read/${id}`);
       fetchMessages();
     } catch (err) {
       console.log(err);
@@ -30,7 +30,7 @@ export default function AdminMessages() {
   const deleteMessage = async (id) => {
     if (!window.confirm("Are you sure you want to delete this message?")) return;
     try {
-      await axios.delete(`http://localhost:5000/admin/messages/delete/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/admin/messages/delete/${id}`);
       fetchMessages();
     } catch (err) {
       console.log(err);

@@ -13,7 +13,7 @@ export default function AdminContact() {
 
   const fetchContact = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/admin/contact");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/admin/contact`);
       setForm(res.data);
     } catch (err) {
       console.log(err);
@@ -34,7 +34,7 @@ export default function AdminContact() {
     if (file) data.append("map_image", file); else data.append("map_image", form.map_image);
 
     try {
-      await axios.put(`http://localhost:5000/admin/contact/update/${form.contact_id}`, data);
+      await axios.put(`${process.env.REACT_APP_API_URL}/admin/contact/update/${form.contact_id}`, data);
       setShowModal(false);
       fetchContact();
       alert("Contact info updated!");
@@ -65,7 +65,7 @@ export default function AdminContact() {
             <td data-label="Location" className=" dark:text-white border">{form.location}</td>
             <td data-label="Image" className=" dark:text-white border">
               {form.map_image && 
-              <img src={`http://localhost:5000/images/${form.map_image}`}
+              <img src={`${process.env.REACT_APP_API_URL}/images/${form.map_image}`}
                alt="Map" 
                className="w-24 h-24 object-cover rounded" />}
             </td>

@@ -18,7 +18,7 @@ export default function Contact() {
   // Load contact info
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/contact")
+      .get(`${process.env.REACT_APP_API_URL}/admin/contact`)
       .then((res) => setInfo(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -29,7 +29,7 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:5000/contact/messages", formData);
+    await axios.post(`${process.env.REACT_APP_API_URL}/contact/messages`, formData);
     alert("Message sent successfully!");
     setFormData({ name: "", email: "", message: "" });
    
@@ -146,7 +146,7 @@ export default function Contact() {
           {/* Map placeholder */}
           <div className="mt-6 rounded-2xl overflow-hidden shadow-md">
             <img
-                src={`http://localhost:5000/images/${info.map_image}`}
+                src={`${process.env.REACT_APP_API_URL}/images/${info.map_image}`}
               alt="Map"
               className="w-full h-56 object-cover"
             />

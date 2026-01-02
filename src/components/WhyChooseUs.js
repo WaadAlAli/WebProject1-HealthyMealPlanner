@@ -22,7 +22,7 @@ const WhyChooseUs = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/whychooseus")
+      .get(`${process.env.REACT_APP_API_URL}/admin/whychooseus`)
       .then((res) => setFeatures(res.data))
       .catch((err) => console.log(err));
   }, []);

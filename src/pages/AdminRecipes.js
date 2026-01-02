@@ -28,12 +28,12 @@ export default function AdminRecipes() {
   }, []);
 
   const fetchRecipes = async () => {
-    const res = await axios.get("http://localhost:5000/admin/recipes");
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/admin/recipes`);
     setRecipes(res.data);
   };
 
   const fetchCategories = async () => {
-    const res = await axios.get("http://localhost:5000/admin/categories");
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/admin/categories`);
     setCategories(res.data);
   };
 
@@ -81,11 +81,11 @@ export default function AdminRecipes() {
 // Decide add or edit
     if (editingId) {
       await axios.put(
-        `http://localhost:5000/admin/recipes/update/${editingId}`,
+        `${process.env.REACT_APP_API_URL}/admin/recipes/update/${editingId}`,
         data
       );
     } else {
-      await axios.post("http://localhost:5000/admin/recipes/add", data);
+      await axios.post(`${process.env.REACT_APP_API_URL}/admin/recipes/add`, data);
     }
 
     setOpen(false);
@@ -94,7 +94,7 @@ export default function AdminRecipes() {
 
   const deleteRecipe = async (id) => {
     if (!window.confirm("Delete this recipe?")) return;
-    await axios.delete(`http://localhost:5000/admin/recipes/delete/${id}`);
+    await axios.delete(`${process.env.REACT_APP_API_URL}/admin/recipes/delete/${id}`);
     fetchRecipes();
   };
   const filteredRecipes = recipes
@@ -194,7 +194,7 @@ export default function AdminRecipes() {
               <td data-label="Image" className="dark:text-white border">
                 {r.image && (
                   <img
-                    src={`http://localhost:5000/images/${r.image}`}
+                    src={`${process.env.REACT_APP_API_URL}/images/${r.image}`}
                     className="w-14 h-14 object-cover rounded"
                   />
                 )}

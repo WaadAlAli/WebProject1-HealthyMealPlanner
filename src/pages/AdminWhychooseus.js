@@ -24,7 +24,7 @@ setForm((prev) => ({ ...prev, [e.target.name]: e.target.value
 
   const fetchWhyChooseUs = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/admin/whychooseus");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/admin/whychooseus`);
       setFeatures(res.data);
       setError(false);
     } catch (err) {
@@ -40,7 +40,7 @@ useEffect(() => {
   const deleteFeatures = async (id) => {
     if (!window.confirm("Are you sure you want to delete this feature?")) return;
     try {
-      await axios.delete(`http://localhost:5000/admin/whychooseus/delete/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/admin/whychooseus/delete/${id}`);
       setFeatures(features.filter(u => u.reason_id !== id));
       fetchWhyChooseUs();
     } catch (err) {
@@ -54,7 +54,7 @@ useEffect(() => {
     e.preventDefault();
     setError(false);
     try {
-      const res = await axios.post("http://localhost:5000/admin/whychooseus/add", form);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/admin/whychooseus/add`, form);
       setShowAddModal(false);
       fetchWhyChooseUs();
     } catch (err) {
@@ -67,7 +67,7 @@ useEffect(() => {
   const handleEditFeatures = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/admin/whychooseus/update/${form.reason_id}`, form);
+      await axios.put(`${process.env.REACT_APP_API_URL}/admin/whychooseus/update/${form.reason_id}`, form);
       setShowEditModal(false);
       fetchWhyChooseUs();
     } catch (err) {

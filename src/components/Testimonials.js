@@ -11,7 +11,7 @@ const Testimonials = () => {
   // Load testimonials info
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/testinomials")
+      .get(`${process.env.REACT_APP_API_URL}/admin/testinomials`)
       .then((res) => setInfo(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -32,7 +32,7 @@ const Testimonials = () => {
           >
             {/* Reviewer image */}
             <img
-               src={`http://localhost:5000/images/${review.image}`}
+               src={`${process.env.REACT_APP_API_URL}/images/${review.image}`}
               alt={review.name}
               className="w-30 h-40 rounded-full mx-auto mb-4 object-cover"
             />

@@ -14,7 +14,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const getDashboardData = () => axios.get("http://localhost:5000/dashboard");
+const getDashboardData = () => axios.get(`${process.env.REACT_APP_API_URL}/dashboard`);
 const COLORS = ["#22c55e", "#3b82f6", "#f97316", "#a855f7", "#ec4899"];
 
 const Dashboard = () => {

@@ -8,7 +8,7 @@ export default function About() {
   // Load about info
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/about")
+      .get(`${process.env.REACT_APP_API_URL}/admin/about`)
       .then((res) => setInfo(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -26,7 +26,7 @@ export default function About() {
         <div className="relative flex justify-center">
           <div className="absolute -bottom-6 -left-6 w-72 h-72 bg-green-200 rounded-3xl -z-10"></div>
           <img
-              src={`http://localhost:5000/images/${info.image}`}
+              src={`${process.env.REACT_APP_API_URL}/images/${info.image}`}
             alt="Healthy meal planning"
             className="w-3/4 max-w-sm rounded-3xl shadow-xl transform hover:scale-105 hover:rotate-1 transition-transform duration-500 ease-in-out"
           />

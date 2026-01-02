@@ -12,7 +12,7 @@ export default function RecipesPage() {
   // Fetch categories
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/categories") // API endpoint
+      .get(`${process.env.REACT_APP_API_URL}/admin/categories`) // API endpoint
       .then((res) => setCategories(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -20,7 +20,7 @@ export default function RecipesPage() {
   // Fetch recipes
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/recipes") //  API endpoint
+      .get(`${process.env.REACT_APP_API_URL}/admin/recipes`) //  API endpoint
       .then((res) => setRecipes(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -75,7 +75,7 @@ export default function RecipesPage() {
               key={recipe.recipe_id}
               recipe={{
                 ...recipe,
-                image: `http://localhost:5000/images/${recipe.image}`,
+                image: `${process.env.REACT_APP_API_URL}/images/${recipe.image}`,
               }}
               onClick={() => setSelectedRecipe(recipe)}
             />
@@ -92,7 +92,7 @@ export default function RecipesPage() {
         <RecipeModal
           recipe={{
             ...selectedRecipe,
-            image: `http://localhost:5000/images/${selectedRecipe.image}`,
+            image: `${process.env.REACT_APP_API_URL}/images/${selectedRecipe.image}`,
           }}
           onClose={() => setSelectedRecipe(null)}
         />

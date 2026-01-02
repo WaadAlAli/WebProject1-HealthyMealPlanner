@@ -28,7 +28,7 @@ console.log(e.target.files[0]); // For debugging
 };
   const fetchTestinomials = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/admin/testinomials");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/admin/testinomials`);
       setTestinomials(res.data);
       setError(false);
     } catch (err) {
@@ -44,7 +44,7 @@ useEffect(() => {
   const deleteTestinomials = async (id) => {
     if (!window.confirm("Are you sure you want to delete this testinomial?")) return;
     try {
-      await axios.delete(`http://localhost:5000/admin/testinomials/delete/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/admin/testinomials/delete/${id}`);
       setTestinomials(testinomials.filter(u => u.testimonial_id !== id));
     } catch (err) {
       console.log(error);
@@ -65,7 +65,7 @@ formdata.append("rating", form.rating);
 // Append file (the key 'image' must match multer field name)
 formdata.append("image", file);
 // Send to backend 
-await axios.post("http://localhost:5000/admin/testinomials/add", formdata, {
+await axios.post(`${process.env.REACT_APP_API_URL}/admin/testinomials/add`, formdata, {
 headers: {
 "Content-Type": "multipart/form-data",
 },
@@ -94,7 +94,7 @@ headers: {
   }
 
   await axios.put(
-    `http://localhost:5000/admin/testinomials/update/${form.testimonial_id}`,
+    `${process.env.REACT_APP_API_URL}/admin/testinomials/update/${form.testimonial_id}`,
     formData
   );
 
@@ -152,7 +152,7 @@ headers: {
                   </td>
                    <td data-label="Image" className=" dark:text-white border">
                  <img
-               src={`http://localhost:5000/images/${testinomial.image}`}
+               src={`${process.env.REACT_APP_API_URL}/images/${testinomial.image}`}
                alt={testinomial.name}
               className="w-16 h-16 object-cover rounded"
   />
