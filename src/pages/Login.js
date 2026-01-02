@@ -1,22 +1,27 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import Food from "../assets/health.jpg";
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const defaultUser = "waad";
-    const defaultPass = "waad123";
-
-    if (username === defaultUser && password === defaultPass) {
-      alert("Login successful!");
-      setUsername("");
-      setPassword("");
-    } else {
-      alert("Invalid username or password");
-       setUsername("");
-      setPassword("");
+  const navigate = useNavigate();
+  const handleLogin = async (e) => {
+     e.preventDefault();
+    try {
+    const res= await axios.post("http://localhost:5000/login", {
+        username,
+        password
+      });
+      // Dynamic redirect based on ROLE
+      if (res.data.role === "admin") {
+        alert("Login successfully");
+         navigate("/dashboard", { state: { username: res.data.username } });
+      } else if (res.data.role === "client") {
+        navigate("/");
+      }
+    } catch (err) {
+      alert("Login failed");
     }
   };
 
@@ -40,6 +45,7 @@ export default function LoginPage() {
           <form onSubmit={handleLogin} className="flex flex-col space-y-6">
             <input
               type="text"
+              name="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Enter your username"
@@ -48,6 +54,7 @@ export default function LoginPage() {
 
             <input
               type="password"
+              name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
@@ -63,7 +70,14 @@ export default function LoginPage() {
           </form>
 
           <p className="text-sm text-gray-600 mt-4 text-center">
-            Don’t have an account? <span className="text-green-600 cursor-pointer">Sign up</span>
+            Don’t have an account? 
+              <Link
+               to="/register"
+              className="text-green-600 "
+                          >
+                            Register
+                          </Link>
+              
           </p>
         </div>
       </div>

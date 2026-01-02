@@ -31,7 +31,7 @@ const features = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-green-50 to-blue-50">
+    <section className="py-20 bg-gradient-to-b  from-green-50 to-blue-50">
       <div className="max-w-6xl mx-auto text-center px-6">
         {/* Title Section */}
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">

@@ -6,8 +6,8 @@ import WhyChooseUs from '../components/WhyChooseUs';
 import  Banner from '../components/Banner';
 function Home() {
   return (
-    <div className="p-10 text-center">
-      <Hero/>
+    <div className="p-0 text-center">
+      <Hero />
       <Banner/>
       <WhyChooseUs/>
       <Testimonials/>
